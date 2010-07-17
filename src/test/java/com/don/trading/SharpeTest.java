@@ -43,11 +43,5 @@ public class SharpeTest
     	double [] returns4 = { 0.054, 0.0086, -0.0846, 0.1040, 0.013, 0.0037, 0.0078, 0.0116, 0.00923, 0.0112, 0.0187, 0.0061 };
     	assertEquals( sharpe.getSharpeRatio(returns4, 0.0035), 1.0898282924873377 );
     	
-    	
-    	
-    	
-    	
-    	
-    	
     }
 }
