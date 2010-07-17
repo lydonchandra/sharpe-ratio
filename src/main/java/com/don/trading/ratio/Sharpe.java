@@ -1,15 +1,25 @@
 package com.don.trading.ratio;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.math.BigDecimal;
+import java.util.Properties;
 
 import org.apache.commons.math.stat.descriptive.DescriptiveStatistics;
-import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.PropertyConfigurator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class Sharpe {
-	public Sharpe() {
-		BasicConfigurator.configure();
+	public Sharpe() throws IOException {
+		// BasicConfigurator.configure();
+		Properties prop = new Properties();
+		String filename = "src/main/resources/log4j.properties";
+		InputStream is = new FileInputStream(filename);
+		prop.load(is);
+		PropertyConfigurator.configure(prop);
 	}
 	
 	private final static Logger logger = LoggerFactory.getLogger(Sharpe.class);
