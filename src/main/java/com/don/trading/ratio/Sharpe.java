@@ -1,7 +1,6 @@
 package com.don.trading.ratio;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigDecimal;
@@ -16,44 +15,48 @@ public class Sharpe {
 	public Sharpe() throws IOException {
 		// BasicConfigurator.configure();
 		Properties prop = new Properties();
-		String filename = "src/main/resources/log4j.properties";
-		InputStream is = new FileInputStream(filename);
+		final String filename = "src/main/resources/log4j.properties";
+		final InputStream is = new FileInputStream(filename);
 		prop.load(is);
 		PropertyConfigurator.configure(prop);
+		is.close();
 	}
-	
-	private final static Logger logger = LoggerFactory.getLogger(Sharpe.class);
-	
-	public BigDecimal getSharpeRatio(BigDecimal annualTradingReturn, BigDecimal riskFreeRate, BigDecimal tradingReturnDeviation ) {
-		BigDecimal sharpeRatio = annualTradingReturn.subtract(riskFreeRate).divide(tradingReturnDeviation);
+
+	private static final Logger LOGGER = LoggerFactory.getLogger(Sharpe.class);
+
+	public final BigDecimal getSharpeRatio( final BigDecimal yearTradingReturn, 
+											final BigDecimal riskFreeRate, 
+											final BigDecimal tradingReturnDeviat ) {
+		final BigDecimal sharpeRatio = yearTradingReturn.subtract(riskFreeRate).divide(tradingReturnDeviat);
 		return sharpeRatio;
 	}
-	
-	public double getSharpeRatio(double [] returns, double riskFreeReturn) {
-		DescriptiveStatistics stats = new DescriptiveStatistics();
-    	for( double item : returns) {
+
+	public final double getSharpeRatio(final double [] returns, final double riskFreeReturn) {
+		final DescriptiveStatistics stats = new DescriptiveStatistics();
+        for(double item : returns) {
     		stats.addValue(item);
     	}
-
+        
+        final int MONTH_IN_YEAR = 12;
+        
     	double mean = stats.getMean();
-    	double annualizedMean = mean * 12;
+    	double annualizedMean = mean * MONTH_IN_YEAR;
 
-    	logger.info("mean={}", mean);
-    	logger.info("mean=" + mean);
-    	logger.info("annualMean=" + annualizedMean);
-    	
+    	LOGGER.info("mean={}", mean);
+    	LOGGER.info("annualMean={}",annualizedMean);
+
     	double std = stats.getStandardDeviation();
-    	double annualizedStd = std * Math.sqrt(12);
-    	
-    	logger.info("std=" + std);
-    	logger.info("annualStd=" + annualizedStd );
+    	double annualizedStd = std * Math.sqrt( MONTH_IN_YEAR );
+
+    	LOGGER.info("std={}",std);
+    	LOGGER.info("annualStd={}",annualizedStd );
 
     	double sharpeRatio = 0.0;
     	sharpeRatio = (annualizedMean - (riskFreeReturn) ) / annualizedStd; // *  unbiasedFactor;
-    	
-    	logger.info("sharpeRatio="+ sharpeRatio);
-    	
-    	logger.info("");
+
+    	LOGGER.info("sharpeRatio={}",sharpeRatio);
+
+    	LOGGER.info("");
     	return sharpeRatio;
 
 	}
