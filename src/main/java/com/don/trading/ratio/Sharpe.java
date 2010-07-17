@@ -29,8 +29,7 @@ public class Sharpe {
     	System.out.println("annualStd=" + annualizedStd );
 
     	double sharpeRatio = 0.0;
-    	sharpeRatio = (annualizedMean - (riskFreeReturn) ) / annualizedStd;
-    	
+    	sharpeRatio = (annualizedMean - (riskFreeReturn) ) / annualizedStd; // *  unbiasedFactor;
     	
     	System.out.println("sharpeRatio="+ sharpeRatio);
     	
