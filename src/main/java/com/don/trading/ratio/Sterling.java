@@ -22,14 +22,17 @@ public class Sterling {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(Sterling.class);
 	
+	private static final double STERLING_ADJUST = 0.1;
+	
 	public final double getSterlingRatio( final double[] returns ) {
 		Compound compound = new Compound();
 		double cror = compound.getCror(returns);
 		double annualCror = compound.getAnnualCror(cror);
-		 
+		Drawdown drawdown = new Drawdown();
+		double maxDraw = drawdown.getMaxDrawdown(returns); 
+		double sterling = annualCror / Math.abs(maxDraw - STERLING_ADJUST);
 		
-		
-		return 0.0;
+		return sterling;
 	}
 	
 	
