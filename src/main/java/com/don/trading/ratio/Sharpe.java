@@ -24,12 +24,12 @@ public class Sharpe {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(Sharpe.class);
 
-	public final BigDecimal getSharpeRatio( final BigDecimal yearTradingReturn, 
-											final BigDecimal riskFreeRate, 
-											final BigDecimal tradingReturnDeviat ) {
-		final BigDecimal sharpeRatio = yearTradingReturn.subtract(riskFreeRate).divide(tradingReturnDeviat);
-		return sharpeRatio;
-	}
+//	public final BigDecimal getSharpeRatio( final BigDecimal yearTradingReturn, 
+//											final BigDecimal riskFreeRate, 
+//											final BigDecimal tradingReturnDeviat ) {
+//		final BigDecimal sharpeRatio = yearTradingReturn.subtract(riskFreeRate).divide(tradingReturnDeviat);
+//		return sharpeRatio;
+//	}
 
 	public final double getSharpeRatio(final double [] returns, final double riskFreeReturn) {
 		final DescriptiveStatistics stats = new DescriptiveStatistics();
