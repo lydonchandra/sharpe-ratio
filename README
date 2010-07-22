@@ -1,0 +1,33 @@
+Sterling Ratio:
+
+  Annual CROR/ ABS (Average Maximum Drawdown - 10%)  
+
+We saw in the section on Maximum Drawdown that this is another aspect of risk that needs to be accounted for. In fact, being in the midst of a series of losing trades can be one of the riskiest times in trading, for it is then that the potential for misjudgement is at its greatest.
+
+Accounting for risk in terms of drawdown is what the Sterling Ratio does. It is calculated by dividing the Annual CROR by the Absolute (Average Yearly Maximum Drawdown less an arbitrary 10%). In doing so, it seeks to find the service that has the highest return while also enduring the least amount of drawdown volatility.
+
+
+ Month 	ROI  	  VAMI
+1 	11.20% 	$1,112
+2 	14.90% 	$1,278
+3 	-1.50% 	$1,259
+4 	-5.10% 	$1,194
+5 	0.50% 	$1,200
+6 	9.70% 	$1,317
+7 	-1.70% 	$1,294
+8 	5.90% 	$1,371
+9 	3.90% 	$1,424
+10 	-0.50% 	$1,417
+11 	1.70% 	$1,441
+12 	3.30% 	$1,489
+13 	11.10% 	$1,654
+14 	5.20% 	$1,740
+15 	7.50% 	$1,870
+
+Using the same service's results, we can calculate the Annual CROR13, which is 64.9%.
+
+The Average Maximum Drawdown14 is an average of the maximum monthly drawdowns. In this case, it is 6.6%.
+
+By inserting these values into the formula, we then calculate the annual Sterling Ratio to be:
+ 
+64.9 / ABS (-6.6 - 10) = 3.91
